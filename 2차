@@ -1,0 +1,384 @@
+CREATE TABLE  EMP (
+       emp_no      VARCHAR2(30)  NOT NULL,
+       emp_name    VARCHAR2(80)  NOT NULL,
+       salary      NUMBER            NULL,
+       hire_date   DATE              NULL
+);
+
+DESC EMP;
+
+ALTER TABLE emp 
+MODIFY EMP_NAME VARCHAR2(100);
+
+
+ALTER TABLE emp
+ADD EMP_NAME2  VARCHAR2(80);
+
+
+ALTER TABLE emp
+RENAME COLUMN EMP_NAME2 TO EMP_NAME3;
+
+
+ALTER TABLE emp
+DROP COLUMN EMP_NAME3;
+
+
+DESC EMP;
+
+ 
+DROP TABLE emp;
+
+
+DESC EMP;
+
+
+CREATE TABLE  EMP (
+       emp_no      VARCHAR2(30)  PRIMARY KEY, 
+       emp_name    VARCHAR2(80)  NOT NULL,
+       salary      NUMBER            NULL,
+       hire_date   DATE              NULL
+);
+
+
+CREATE TABLE  EMP2 (
+       emp_no      VARCHAR2(30)  , 
+       emp_name    VARCHAR2(80)  NOT NULL,
+       salary      NUMBER            NULL,
+       hire_date   DATE              NULL,
+       PRIMARY KEY (emp_no)
+);
+
+
+
+ CREATE TABLE  EMP3 (
+       emp_no      VARCHAR2(30)  ,
+       emp_name    VARCHAR2(80)  NOT NULL,
+       salary      NUMBER            NULL,
+       hire_date   DATE              NULL
+       );
+
+
+ALTER TABLE EMP3
+ADD CONSTRAINTS EMP3_PK PRIMARY KEY ( EMP_NO );
+
+
+CREATE TABLE DEPT_TEST (
+       dept_no      NUMBER        NOT NULL,
+       dept_name    VARCHAR2(50)  NOT NULL,
+       dept_desc    VARCHAR2(100)     NULL,
+       create_date  DATE 
+);
+
+
+DESC DEPT_TEST;
+
+
+ALTER TABLE DEPT_TEST
+ADD COLUMN DEPT_DESC1 VARCHAR2(80);
+
+ALTER TABLE DEPT_TEST
+DROP COLUMN DEPT_DESC1 ;
+
+
+ALTER TABLE DEPT_TEST
+ADD CONSTRAINTS DEP_TEST_PK PRIMARY KEY ( DEPT_NO);
+
+
+
+DROP TABLE DEPT_TEST;
+
+
+SELECT *
+FROM EMPLOYEES;
+
+DESC EMPLOYEES;
+
+ 
+SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, SALARY
+FROM EMPLOYEES;
+
+
+SELECT *
+  FROM departments;
+  
+
+SELECT *
+  FROM EMPLOYEES
+ WHERE EMPLOYEE_ID = 100;
+
+SELECT *
+  FROM EMPLOYEES
+ WHERE EMPLOYEE_ID <> 100;
+
+ SELECT *
+  FROM EMPLOYEES
+ WHERE EMPLOYEE_ID != 100;
+
+SELECT *
+  FROM EMPLOYEES
+ WHERE EMPLOYEE_ID > 100
+   AND JOB_ID = 'ST_CLERK';
+
+SELECT *
+  FROM EMPLOYEES
+ WHERE SALARY >= 5000;
+ 
+
+SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, SALARY
+  FROM EMPLOYEES
+ WHERE SALARY >= 5000;
+ 
+SELECT *
+  FROM employees
+ WHERE salary <= 2400
+    OR salary >= 20000; 
+    
+
+SELECT *
+  FROM employees
+ WHERE last_name = 'grant' ;
+ 
+SELECT *
+  FROM employees
+ WHERE last_name = 'Grant' ;
+
+
+SELECT *
+FROM employees
+ORDER BY employee_id;
+
+SELECT *
+FROM employees
+ORDER BY employee_id DESC;
+
+SELECT *
+FROM employees
+ORDER BY first_name, last_name
+;
+
+SELECT employee_id, first_name, last_name
+FROM employees
+ORDER BY first_name, last_name desc
+;
+
+
+SELECT employee_id, first_name, last_name, salary
+  FROM employees
+ WHERE salary >= 5000
+ ORDER BY salary desc;
+
+
+SELECT *
+FROM employees
+ORDER BY 2, 3 DESC
+;
+
+SELECT employee_id, first_name, last_name, email
+FROM employees
+ORDER BY 2, 3, 5;
+
+SELECT employee_id, first_name, last_name, email
+FROM employees
+ORDER BY 2, 3, phone_number;
+
+SELECT employee_id, first_name, last_name, email
+FROM employees
+ORDER BY 2, 3;
+
+
+SELECT employee_id, first_name, last_name, commission_pct
+FROM employees
+ORDER BY commission_pct;
+
+
+SELECT employee_id, first_name, last_name, commission_pct
+FROM employees
+ORDER BY commission_pct DESC;
+
+SELECT 1+1 plus_test, 1-1 minus_test
+  FROM DUAL;
+
+
+SELECT 1+1*3 multiply, 7-4/2 divide
+  FROM DUAL;  
+
+SELECT (1+1)*3 multiply, (7-4)/2 divide
+  FROM DUAL;  
+  
+
+SELECT 'A' || 'B', 'C' || 'D' || 'F'
+  FROM DUAL;  
+  
+
+SELECT first_name || ' ' || last_name full_name
+FROM employees;
+
+
+SELECT 1+1 plus_test, 1-1 minus_test
+  FROM DUAL;
+
+
+SELECT 1+1*3 multiply, 7-4/2 divide
+  FROM DUAL;  
+
+
+SELECT (1+1)*3 multiply, (7-4)/2 divide
+  FROM DUAL;  
+  
+-- 문자열 결합
+SELECT 'A' || 'B', 'C' || 'D' || 'F'
+  FROM DUAL;  
+  
+-- 문자열 결합 사용 예
+SELECT first_name || ' ' || last_name full_name
+FROM employees;
+
+SELECT first_name || '-' || last_name full_name
+FROM employees;
+
+SELECT *
+  FROM employees
+ WHERE salary = 2500;
+ 
+
+SELECT *
+  FROM employees
+ WHERE salary != 2500;
+ 
+ SELECT *
+  FROM employees
+ WHERE salary <> 2500;
+ 
+
+ SELECT *
+  FROM employees
+ WHERE salary > 3000 
+ ORDER BY salary;
+ 
+ SELECT *
+  FROM employees
+ WHERE salary >= 3000 
+ ORDER BY salary; 
+ 
+
+SELECT *
+  FROM employees
+ WHERE salary < 3000 
+ ORDER BY salary desc; 
+ 
+
+SELECT *
+  FROM employees
+ WHERE salary <= 3000 
+ ORDER BY salary desc;  
+ 
+
+SELECT *
+  FROM employees
+ WHERE salary >= 3000 
+   AND salary <= 5000
+ ORDER BY salary ;  
+  
+SELECT *
+  FROM employees
+ WHERE salary BETWEEN 3000 AND 5000
+ ORDER BY salary ;   
+ 
+
+SELECT *
+  FROM employees
+ WHERE NOT (salary = 2500 )
+ ORDER BY salary 
+ ; 
+ 
+
+ SELECT *
+  FROM employees
+ WHERE commission_pct = NULL;
+ 
+ 
+SELECT *
+  FROM employees
+ WHERE commission_pct IS NULL;
+
+SELECT *
+  FROM employees
+ WHERE commission_pct IS NOT NULL; 
+ 
+
+SELECT *
+  FROM employees
+ WHERE phone_number LIKE '011%';
+ 
+
+SELECT *
+  FROM employees
+ WHERE phone_number LIKE '%9'; 
+
+SELECT *
+  FROM employees
+ WHERE phone_number LIKE '%124%';
+ 
+
+SELECT *
+  FROM employees
+ WHERE JOB_ID IN ('IT_PROG', 'AD_VP', 'FI_ACCOUNT');
+ 
+
+SELECT *
+  FROM employees
+ WHERE JOB_ID NOT IN ('IT_PROG', 'AD_VP', 'FI_ACCOUNT');
+ 
+
+
+SELECT *
+FROM regions;
+
+SELECT *
+FROM countries;
+
+
+SELECT country_id
+      ,country_name
+      ,CASE region_id WHEN 1 THEN '유럽'
+                      WHEN 2 THEN '아메리카'
+                      WHEN 3 THEN '아시아'
+                      WHEN 4 THEN '중동 및 아프리카'
+       END region_name
+FROM countries;
+
+SELECT employee_id, first_name, last_name, salary, job_id
+      ,CASE WHEN salary BETWEEN 1     AND 5000  THEN '낮음'
+            WHEN salary BETWEEN 5001  AND 10000 THEN '중간'
+            WHEN salary BETWEEN 10000 AND 15000 THEN '높음'
+            ELSE '최상위'
+       END salary_rank     
+FROM employees;
+
+
+
+SELECT employee_id, first_name, last_name, salary, job_id
+      ,CASE WHEN salary BETWEEN 1     AND 5000  THEN '낮음'
+            WHEN salary BETWEEN 5001  AND 10000 THEN '중간'
+            WHEN salary BETWEEN 10000 AND 15000 THEN '높음'
+            ELSE 9
+       END salary_rank     
+FROM employees;
+
+
+SELECT employee_id, first_name, last_name, salary, job_id
+      ,CASE WHEN salary BETWEEN 1     AND 5000  THEN 1
+            WHEN salary BETWEEN 5001  AND 10000 THEN 2
+            WHEN salary BETWEEN 10000 AND 15000 THEN 3
+            ELSE 9
+       END salary_rank     
+FROM employees;
+
+-- rownum 1
+SELECT employee_id, first_name, last_name, rownum
+FROM employees;
+
+--  rownum 2
+SELECT employee_id, first_name, last_name, rownum
+FROM employees
+WHERE rownum <= 5;
