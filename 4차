@@ -1,0 +1,87 @@
+SELECT employee_id
+FROM employees
+GROUP BY employee_id;
+
+SELECT employee_id, job_id
+FROM employees
+ORDER BY 2;
+
+SELECT job_id
+from employees
+group by job_id;
+
+select to_char(hire_date, 'yyyy') hire_year
+from employees
+group by to_char(hire_date, 'yyyy');
+
+select to_char(hire_date, 'yyyy')hire_year
+from employees
+group by hire_date;
+
+select count(*)
+from employees;
+
+select count(*) total_cnt,
+min(salary) min_salary,
+max(salary) max_salary
+from employees;
+
+select job_id,
+count(*) total_cnt,
+min(salary) min_salary,
+max(salary) max_dalary
+from employees
+group by job_id
+order by job_id;
+
+select to_char(hire_date, 'yyyy')hire_year,
+department_id,
+count(*), sum(salary), avg(salary)
+from employees
+group by to_char(hire_date, 'yyyy'), department_id
+order by 1,2;
+
+select to_char(hire_date, 'yyyy')hire_year,
+department_id,
+count(*), 
+sum(salary), 
+avg(salary)
+from employees
+where to_char(hire_date, 'yyyy')>='2004'
+group by to_char(hire_date, 'yyyy'), department_id
+order by 1,2;
+
+select to_char(hire_date, 'yyyy')hire_year,
+department_id,
+count(*), 
+sum(salary), 
+round(avg(salary),0)
+from employees
+where to_char(hire_date, 'yyyy')>='2004'
+group by to_char(hire_date, 'yyyy'), department_id
+order by 1,2;
+
+select to_char(hire_date, 'yyyy')hire_year,
+department_id,
+count(*), 
+sum(salary), 
+round(avg(salary),0)
+from employees
+where round(avg(salary),0) >= 5000
+group by to_char(hire_date, 'yyyy'), department_id
+order by 1,2;
+
+-- 안되기때문에 아래와 같이 having 사용
+
+select to_char(hire_date, 'yyyy')hire_year,
+department_id,
+count(*), 
+sum(salary), 
+round(avg(salary),0)
+from employees
+--where round(avg(salary),0) >= 5000
+group by to_char(hire_date, 'yyyy'), department_id
+having round(avg(salary),0) >= 5000
+order by 1,2;
+
+
